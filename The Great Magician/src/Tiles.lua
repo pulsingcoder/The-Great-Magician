@@ -28,13 +28,20 @@ function Tiles:init(worldd,height,width,layers)
             table.insert(self.groundFixtures,love.physics.newFixture(self.groundBodies[self.count+1], self.edgeShapes[self.count+1]))
             self.count  = self.count +1
           end
+
+      elseif data[index] == 0 then
+        temp = Tile(x*16,y*16,16,16,prop['Solid'])
+        if temp.prop == 0 then
+          self.tiles[y][x] = temp
         end
+      end
+
       end
     end
   end
 
 
-
+return self.tiles
 
 
 end
@@ -47,7 +54,7 @@ function Tiles:render()
   for i=1,#self.groundBodies do
 
 
-    --  love.graphics.line(self.groundBodies[i]:getWorldPoints(self.edgeShapes[i]:getPoints()))
+--love.graphics.line(self.groundBodies[i]:getWorldPoints(self.edgeShapes[i]:getPoints()))
    end
 
 end

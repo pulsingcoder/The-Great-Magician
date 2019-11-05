@@ -3,10 +3,10 @@ Entity = Class{}
 function Entity:init(def)
   self.animations = {}
 
-  for v,animationDef in pairs(def.animations) do
-    self.animations[v] = Animation{
-     frames = animationDef.frames,
-     interval = animationDef.interval
+  for i,animDef in pairs(def.animations) do
+    self.animations[i] = Animation{
+     frames = animDef.frames,
+     interval = animDef.interval
     }
 
   end

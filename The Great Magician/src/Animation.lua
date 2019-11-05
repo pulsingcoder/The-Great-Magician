@@ -5,7 +5,7 @@ function Animation:init(def)
   self.frames = def.frames
   self.interval = def.interval
   self.timer = 0
-  self.currentFrame = 1
+  self.currentFrame = self.frames[1] or 1
 end
 
 
