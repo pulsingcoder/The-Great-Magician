@@ -2,6 +2,13 @@ require 'src/dependencies'
 love.graphics.setDefaultFilter('nearest', 'nearest')
 
 function love.load()
+  gFonts = {
+    ['MagicianFont'] = love.graphics.newFont('Fonts/TGM.otf', 64),
+    ['small'] = love.graphics.newFont('Fonts/font.ttf',8),
+    ['medium'] = love.graphics.newFont('Fonts/font.ttf', 16),
+    ['large'] = love.graphics.newFont('Fonts/font.ttf',32),
+
+  }
   love.window.setTitle("The Great Magician")
   love.graphics.setDefaultFilter('nearest', 'nearest')
   math.randomseed(os.time())
@@ -28,8 +35,8 @@ background = {
   ['back4'] = love.graphics.newImage("Graphics/plx-4.png"),
   ['back5'] = love.graphics.newImage("Graphics/plx-5.png")
 }
---tile2 = Tiles(world,mapi_battle.height,mapi_battle.width,mapi_battle.layers)
-gStateMachine:change('start')
+tile2 = Tiles(world,mapi_battle.height,mapi_battle.width,mapi_battle.layers)
+gStateMachine:change("battle")
 
 
 end
@@ -66,11 +73,11 @@ end
 
 function love.draw()
   push:start()
-  
+love.graphics.setFont(gFonts['small'])
 love.graphics.setLineWidth(2)
 
 gStateMachine:render()
---love.graphics.print(tostring(math.floor(avtarBody:getX())).." "..tostring(math.floor(avtarBody:getY())),virtual_width/2+10,virtual_height/2+50)
+love.graphics.print(tostring(math.floor(avtarBody:getX())).." "..tostring(math.floor(avtarBody:getY())),virtual_width/2+10,virtual_height/2+50)
 
 
   push:finish()

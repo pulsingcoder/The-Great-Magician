@@ -2,7 +2,7 @@ StartState = Class{_includes =BaseState}
 
 function StartState:init()
   startlocal = love.graphics.newImage('Graphics/startback.png')
-  MagicianFont = love.graphics.newFont('Fonts/TGM.otf', 64)
+  
 end
 
 
@@ -33,7 +33,7 @@ love.graphics.setColor(1, 1, 1, 1)
 
 
   love.graphics.setColor(1, 0.1, 0.1, 1)
-  love.graphics.setFont(MagicianFont)
+  love.graphics.setFont(gFonts['MagicianFont'])
 
   love.graphics.printf("The Great Magician", 60, virtual_height/2-30, virtual_width, 'center',0,0.5,0.5)
     love.graphics.setColor(1, 0.1, 0.1, 1)

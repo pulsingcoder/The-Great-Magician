@@ -34,6 +34,9 @@ end
 
 
 function Enemies:drawPanel(x,y,width,flag)
+  if self.health <= 0 then
+    self.indicatorFlag = false
+  end
   if  self.indicatorFlag  then
     love.graphics.setColor(0, 0, 0, 1)
     love.graphics.rectangle('line', x, y-8,25, 1,3)
@@ -52,4 +55,12 @@ function Enemies:drawPanel(x,y,width,flag)
   self.indicatorTimer =  self.indicatorTimer + 1
 end
 --  love.graphics.polygon('line',self.body:getWorldPoints(skeletonShape:getPoints()))
+end
+
+
+
+function Enemies:drawText(x, yy,text)
+  love.graphics.rectangle('line', x, yy, 50, 10,3)
+  love.graphics.setFont(gFonts['small'])
+  love.graphics.print(text,x+5,yy+2)
 end

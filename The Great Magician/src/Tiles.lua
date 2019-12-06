@@ -54,7 +54,7 @@ function Tiles:render()
   for i=1,#self.groundBodies do
 
 
---love.graphics.line(self.groundBodies[i]:getWorldPoints(self.edgeShapes[i]:getPoints()))
+ --love.graphics.line(self.groundBodies[i]:getWorldPoints(self.edgeShapes[i]:getPoints()))
    end
 
 end

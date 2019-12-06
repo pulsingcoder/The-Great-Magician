@@ -36,6 +36,30 @@ Entity_Data = {
 
 
   },
+  ['wizard'] = {
+    walkspeed = Player_Walk_Speed,
+    direction = 'left',
+    animations = {
+      ['moving'] = {
+        frames = {1,2,3},
+        interval = 0.3
+
+      },
+      ['idle'] = {
+        frames = {1,2,3,4},
+        interval = 0.2
+      },
+      ['death'] = {
+        frames = {1,2,3,4,5,6,7,8,9},
+        interval = 0.15
+      }
+
+
+  }
+
+
+},
+
   ['flower'] = {
     animations = {
       ['idle'] = {
