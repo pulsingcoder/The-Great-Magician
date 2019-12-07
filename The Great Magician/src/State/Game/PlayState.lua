@@ -161,6 +161,9 @@ end
       self.flower:drawPanel(680,115,self.flower.width,self.flowerFlag)
 
     end
+    love.graphics.setColor(0, 0, 0, 1)
+    self.player:drawText(4,5,"DARK FOREST",59)
+      love.graphics.setColor(1, 1, 1, 1)
     love.graphics.pop()
   end
 

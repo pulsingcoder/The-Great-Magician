@@ -17,6 +17,7 @@ function FireMagicianState:init()
 
 
   }
+  self.player.range = 180
    gSongs['battle']:play()
    gSongs['battle']:setVolume(0.3)
   self.player.stateMachine = StateMachine{
@@ -43,19 +44,36 @@ function FireMagicianState:init()
  --self.skeleton.stateMachine = StateMachine{
    --['moving'] = function() return BadMovingState(self.skeleton,self.player,skeletonBody) end  }
  --self.skeleton:changeState('moving')
+ self.startTimer = 0
+ self.start = false
 self.timer = 0
-self.wizardVisible = true
+self.wizardVisible = false
 self.wizard.entry = true
 self.wizard.attack = false
-self.ball = true
+self.ball = false
 self.bally = self.wizard.y+3
-self.ballx = self.wizard.x-10
+self.ballx = virtual_width/2--self.wizard.x-10
 self.wizard:changeAnimation("death")
 self.collision = false
 end
 
 
 function FireMagicianState:update(dt)
+  if not self.start then
+    self.startTimer = self.startTimer +dt
+    world:update(dt)
+
+--    fireAnimation:update(dt)
+    self.player:update(dt)
+
+      self.player.x = avtarBody:getX()
+      self.player.y = avtarBody:getY()
+
+    if (self.startTimer > 3) then
+      self.start = true
+      self.wizardVisible = true
+    end
+  else
   if not self.ball then
     self.bally = self.wizard.y+3
     self.ballx = self.wizard.x-10
@@ -86,14 +104,15 @@ function FireMagicianState:update(dt)
  end
  if self.ball then
  self:ballupdate(dt)
- --self:ballCollision(dt)
+ self:ballCollision(dt)
 end
 self:hit()
 end
-
+end
 function FireMagicianState:ballCollision(dt)
+  if not ball then
   if not self.collision then
-  if math.floor(self.ballx)  < math.floor(avtarBody:getX()) +17  then
+  if math.floor(self.ballx)  < math.floor(avtarBody:getX()) +17 and math.floor(self.bally) < math.floor(avtarBody:getY()) + 17 then
     gSongs['avtarHit']:play()
     while(self.player.count < 7) do
 
@@ -101,21 +120,28 @@ function FireMagicianState:ballCollision(dt)
       avtarBody:setY(avtarBody:getY() - 100*dt)
 
         self.player.count = self.player.count + 1
+
   end
-  avtarBody:applyForce(-100,0)
-  self.player:changeState("jump")
+
+  avtarBody:applyForce(-100,-100)
+  --self.player:changeState("jump")
   self.ball = false
   self.player.currentHealth =  self.player.currentHealth - 1
---  self.player.count = 0
+  self.player.count = 0
   self.collision = true
   --avtarBody:setY(self.y)
-
+else
+  if math.floor(self.ballx) +20 < math.floor(avtarBody:getX()) +17 then
+    self.ball = false
+  end
   end
 
 end
+else
+self.collision = true
 
 end
-
+end
 
 function FireMagicianState:hit()
   if ball then
@@ -140,7 +166,7 @@ end
 
 end
 function FireMagicianState:ballupdate(dt)
-  self.ballx = self.ballx - 35*dt
+  self.ballx = self.ballx - 50*dt
   if self.ballx < 0 then
     self.ball = false
   end
@@ -171,9 +197,12 @@ else
   love.graphics.draw(DarkMagician,darkSprites[self.wizard.currentAnimation:getCurrentFrame()],self.wizard.x,self.wizard.y,0,0.5,0.4)
 end
 end
-love.graphics.print(tostring(self.player.count),5,50)
+love.graphics.print(tostring(self.player.count),5,50,80)
   love.graphics.setColor(1, 1, 1, 1)
   tile2:render()
-  self.wizard:drawText(math.floor(avtarBody:getX()),50,"I know you are here...")
+  if  self.wizard.entry then
+  self.wizard:drawText(math.floor(avtarBody:getX()),50,"I kNOW, YOU ARE HERE..",100)
+end
+
 
 end

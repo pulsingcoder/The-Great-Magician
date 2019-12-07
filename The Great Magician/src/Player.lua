@@ -9,6 +9,7 @@ a = 'pur'
   self.timer = 0
   self.count = 0
   self.jumpCount = 'null'
+  self.range = 70
 end
 
 
@@ -47,4 +48,11 @@ function Player:renderHealth(health)
     love.graphics.draw(heartTexture,heart[2],math.floor(avtarBody:getX() +heartX),4)
     heartX = heartX + 11
   end
+end
+
+
+function Player:drawText(x, yy,text,width)
+  love.graphics.rectangle('line', x, yy, width, 10,3)
+  love.graphics.setFont(gFonts['small'])
+  love.graphics.print(text,x+5,yy+2)
 end

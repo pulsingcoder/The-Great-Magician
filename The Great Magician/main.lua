@@ -22,7 +22,8 @@ function love.load()
   gStateMachine = StateMachine{
     ['play'] = function() return PlayState() end,
     ['battle'] = function() return FireMagicianState() end,
-    ['start'] = function() return StartState() end
+    ['start'] = function() return StartState() end,
+    ['begin'] = function() return BeginState() end
   }
   love.keyboard.keysPressed = {}
 
@@ -35,8 +36,8 @@ background = {
   ['back4'] = love.graphics.newImage("Graphics/plx-4.png"),
   ['back5'] = love.graphics.newImage("Graphics/plx-5.png")
 }
-tile2 = Tiles(world,mapi_battle.height,mapi_battle.width,mapi_battle.layers)
-gStateMachine:change("battle")
+--tile2 = Tiles(world,mapi_battle.height,mapi_battle.width,mapi_battle.layers)
+gStateMachine:change("begin")
 
 
 end
@@ -62,6 +63,9 @@ end
 
 
 function love.update(dt)
+  if avtarBody:getY() < 4 then
+    avtarBody:setY(4)
+  end
 world:update(dt)
 
 

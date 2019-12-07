@@ -5,7 +5,7 @@ function PlayerAttackState:init(player)
   self.tempplayer = player
   self.x = player.x
   self.y = player.y
-
+  self.range = player.range
   self.dy = 0
   self.currentAnimation = player:changeAnimation('attack')
   self.currentAnimation = player.currentAnimation
@@ -27,7 +27,7 @@ end
 function PlayerAttackState:update(dt)
   if ball then
 
-  if tempcount <= 70 then
+  if tempcount <= self.range then
     tempcount = tempcount + 1
     if avtar_direction == 'right' then
     fireBody:setX(fireBody:getX() + 50*dt)
@@ -43,7 +43,7 @@ end
     --  self.currentAnimation = self.tempplayer:changeAnimation('idle')
       --self.currentAnimation = self.tempplayer.currentAnimation
    end
-   if tempcount > 70 then
+   if tempcount > self.range then
      fireBody:setY(-10)
      fireBody:release()
      ball = false

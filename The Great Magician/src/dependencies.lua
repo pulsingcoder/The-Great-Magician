@@ -20,6 +20,7 @@ gSongs = {
 love.graphics.setDefaultFilter('nearest', 'nearest')
  sti = require "lib/Simple-Tiled-Implementation-master/sti"
 Class = require "lib/class"
+Timer = require "lib/knife.timer"
 
 require 'src/tilemap'
 require 'src/Tiles'
@@ -42,11 +43,14 @@ mapi = require 'map/jungle'
 require 'src/utility'
 require 'src/Enemies'
 push = require "push"
+require "src/Textbox"
 
 map = sti("map/jungle.lua")
 battlemap = sti("map/battle.lua")
 mapi = require "map/jungle"
 startmap = sti("map/start.lua")
+require 'src/State/Game/BeginState'
+
 require 'src/State/Game/StartState'
 
 require 'src/State/Game/PlayState'

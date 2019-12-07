@@ -59,8 +59,8 @@ end
 
 
 
-function Enemies:drawText(x, yy,text)
-  love.graphics.rectangle('line', x, yy, 50, 10,3)
+function Enemies:drawText(x, yy,text,width)
+  love.graphics.rectangle('line', x, yy, width, 10,3)
   love.graphics.setFont(gFonts['small'])
   love.graphics.print(text,x+5,yy+2)
 end
