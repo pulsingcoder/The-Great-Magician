@@ -1,4 +1,5 @@
 # The-Great-Magician
+![alt text](https://github.com/pulsingcoder/The-Great-Magician/blob/master/The%20Great%20Magician.jpeg)
 My First Game, developed with Löve2D game engine
 <BR>
   An RPG game, Dive into the world of magic fight and defeat the bad magician.
