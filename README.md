@@ -5,5 +5,5 @@ My First Game, developed with Löve2D game engine
 <BR>
   Game having two levels : Dark Forest and Boss Level
   <BR>
-    <B> Dark Forest: </B> This level have NPCs which magician has to defeat using his fire ball spells.
+    <B> Dark Forest: </B> This level have NPCs which magician has to defeat using his fire ball spells. <BR>
     <B> Boss Stage </B> The Boss Stage :)
